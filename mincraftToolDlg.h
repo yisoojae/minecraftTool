@@ -3,6 +3,11 @@
 //
 
 #pragma once
+#include "inputValue.h"
+#include "fillButton.h"
+#include "copyButton.h"
+#include "resetButton.h"
+#include "addButton.h"
 
 
 // CmincraftToolDlg 대화 상자
@@ -11,6 +16,11 @@ class CmincraftToolDlg : public CDialogEx
 // 생성입니다.
 public:
 	CmincraftToolDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
+	inputValue element, x1, x2, y1, y2, z1, z2;
+	CEdit resultFill;
+	copyButton copyPaste;
+	addButton addFill;
+	resetButton resetResult;
 
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME
@@ -31,4 +41,6 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };

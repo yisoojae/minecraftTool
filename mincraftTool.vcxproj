@@ -183,14 +183,23 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="addButton.h" />
+    <ClInclude Include="copyButton.h" />
+    <ClInclude Include="fillButton.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="inputValue.h" />
     <ClInclude Include="mincraftTool.h" />
     <ClInclude Include="mincraftToolDlg.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="resetButton.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="addButton.cpp" />
+    <ClCompile Include="copyButton.cpp" />
+    <ClCompile Include="fillButton.cpp" />
+    <ClCompile Include="inputValue.cpp" />
     <ClCompile Include="mincraftTool.cpp" />
     <ClCompile Include="mincraftToolDlg.cpp" />
     <ClCompile Include="pch.cpp">
@@ -199,6 +208,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="resetButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="mincraftTool.rc" />

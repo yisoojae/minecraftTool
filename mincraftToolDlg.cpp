@@ -100,6 +100,38 @@ BOOL CmincraftToolDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	element.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL, { 10,10,100,30 }, this, 1);
+	element.nextEdit = &x1;
+	element.preEdit = &z2;
+	x1.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 110,10,200,30 }, this, 2);
+	x1.nextEdit = &y1;
+	x1.preEdit = &element;
+	y1.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 210,10,300,30 }, this, 3);
+	y1.nextEdit = &z1;
+	y1.preEdit = &x1;
+	z1.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 310,10,400,30 }, this, 4);
+	z1.nextEdit = &x2;
+	z1.preEdit = &y1;
+	copyPaste.Create(L"복사", WS_CHILD | WS_VISIBLE, { 410,10,480,60 }, this, 8);
+	x2.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 110,40,200,60 }, this, 5);
+	x2.nextEdit = &y2;
+	x2.preEdit = &z1;
+	y2.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 210,40,300,60 }, this, 6);
+	y2.nextEdit = &z2;
+	y2.preEdit = &x2;
+	z2.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 310,40,400,60 }, this, 7);
+	z2.nextEdit = &element;
+	z2.preEdit = &y2;
+	resultFill.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE | ES_WANTRETURN, { 10,90,400,200 }, this, 9);
+	addFill.Create(L"추가", WS_CHILD | WS_VISIBLE, { 410,90,480,140 }, this, 10);
+	resetResult.Create(L"초기화", WS_CHILD | WS_VISIBLE, { 410,150,480,200 }, this, 11);
+
+	x1.SetWindowText(L"0");
+	y1.SetWindowText(L"0");
+	z1.SetWindowText(L"0");
+	x2.SetWindowText(L"0");
+	y2.SetWindowText(L"0");
+	z2.SetWindowText(L"0");
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -153,3 +185,22 @@ HCURSOR CmincraftToolDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+BOOL CmincraftToolDlg::PreTranslateMessage(MSG* pMsg)
+{
+	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
+	switch (pMsg->message)
+	{
+	case WM_KEYDOWN:
+		switch (pMsg->wParam)
+		{
+		case VK_ESCAPE:
+			::SetFocus(element.m_hWnd);
+		case VK_RETURN:
+			return false;
+		}
+	}
+
+	return CDialogEx::PreTranslateMessage(pMsg);
+}
