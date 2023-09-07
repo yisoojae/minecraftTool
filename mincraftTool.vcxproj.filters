@@ -48,6 +48,9 @@
     <ClInclude Include="addButton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="inputNum.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mincraftTool.cpp">
@@ -72,6 +75,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="addButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="inputNum.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

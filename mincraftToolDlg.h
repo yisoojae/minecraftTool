@@ -8,6 +8,7 @@
 #include "copyButton.h"
 #include "resetButton.h"
 #include "addButton.h"
+#include "inputNum.h"
 
 
 // CmincraftToolDlg 대화 상자
@@ -16,7 +17,8 @@ class CmincraftToolDlg : public CDialogEx
 // 생성입니다.
 public:
 	CmincraftToolDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
-	inputValue element, x1, x2, y1, y2, z1, z2;
+	inputValue element;
+	inputNum x1, x2, y1, y2, z1, z2;
 	CEdit resultFill;
 	copyButton copyPaste;
 	addButton addFill;
