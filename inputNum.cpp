@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "inputNum.h"
+#include "mincraftToolDlg.h"
 BEGIN_MESSAGE_MAP(inputNum, inputValue)
 	ON_WM_MOUSEWHEEL()
 END_MESSAGE_MAP()
@@ -11,9 +12,63 @@ BOOL inputNum::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 	wchar_t* inputText = (wchar_t*)malloc(20);
 	if (inputText)
 	{
-		::GetWindowText(m_hWnd, inputText, 10);
-		_itos(_tstoi(inputText) + (((GetKeyState(VK_CONTROL) & 0x8000) ? 10 : 1) * ((zDelta > 0) ? 1 : -1)), inputText);
-		SetWindowText(inputText);
+		short keyCtrl	= GetKeyState(VK_CONTROL) & 0x8000,
+			keyArt		= GetKeyState(VK_MENU) & 0x8000,
+			keyShift	= GetKeyState(VK_SHIFT) & 0x8000;
+		if (whichPos & 0b1000) // YÁÂÇ¥¸é
+		{
+			if (whichPos & 0b1) // À§ÃþÀÌ¸é
+			{
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->y1), inputText, 10);
+				_itos(_tstoi(inputText) + ((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->y1)).SetWindowText(inputText);
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->x1), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * (keyArt ? -1 : (keyShift ? 1 : 0))), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->x1)).SetWindowText(inputText);
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->z1), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * (keyArt ? -1 : (keyShift ? 1 : 0))), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->z1)).SetWindowText(inputText);
+			}
+			else
+			{
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->y2), inputText, 10);
+				_itos(_tstoi(inputText) + ((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->y2)).SetWindowText(inputText);
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->x2), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * (keyArt ? -1 : (keyShift ? 1 : 0))), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->x2)).SetWindowText(inputText);
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->z2), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * (keyArt ? -1 : (keyShift ? 1 : 0))), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->z2)).SetWindowText(inputText);
+			}
+		}
+		else
+		{
+			if (whichPos & 0b1) // À§ÃþÀÌ¸é
+			{
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->x1), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * ((whichPos & 0b100) ? 1 : (keyArt ? -1 : keyShift ? 1 : 0))), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->x1)).SetWindowText(inputText);
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->z1), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * ((whichPos & 0b10000) ? 1 : (keyArt ? -1 : keyShift ? 1 : 0))), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->z1)).SetWindowText(inputText);
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->y1), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * (keyArt & GetKeyState(VK_SHIFT) ? 1 : 0)), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->y1)).SetWindowText(inputText);
+			}
+			else
+			{
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->x2), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * ((whichPos & 0b100) ? 1 : (keyArt ? -1 : keyShift ? 1 : 0))), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->x2)).SetWindowText(inputText);
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->z2), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * ((whichPos & 0b10000) ? 1 : (keyArt ? -1 : keyShift ? 1 : 0))), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->z2)).SetWindowText(inputText);
+				::GetWindowTextW((inputNum&)(((CmincraftToolDlg*)GetParent())->y2), inputText, 10);
+				_itos(_tstoi(inputText) + (((keyCtrl ? 10 : 1) * ((zDelta > 0) ? 1 : -1)) * (keyArt & GetKeyState(VK_SHIFT) ? 1 : 0)), inputText);
+				((inputNum&)(((CmincraftToolDlg*)GetParent())->y2)).SetWindowText(inputText);
+			}
+		}
 	}
 
 	free(inputText);

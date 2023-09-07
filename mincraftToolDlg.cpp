@@ -132,6 +132,12 @@ BOOL CmincraftToolDlg::OnInitDialog()
 	x2.SetWindowText(L"0");
 	y2.SetWindowText(L"0");
 	z2.SetWindowText(L"0");
+	x1.whichPos = 0b1 | 0b100;
+	y1.whichPos = 0b1 | 0b1000;
+	z1.whichPos = 0b1 | 0b10000;
+	x2.whichPos = 0b10 | 0b100;
+	y2.whichPos = 0b10 | 0b1000;
+	z2.whichPos = 0b10 | 0b10000;
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -199,6 +205,12 @@ BOOL CmincraftToolDlg::PreTranslateMessage(MSG* pMsg)
 			::SetFocus(element.m_hWnd);
 		case VK_RETURN:
 			return false;
+		}
+	case WM_SYSKEYDOWN:
+		switch (pMsg->wParam)
+		{
+		case VK_MENU:
+			return true;
 		}
 	}
 
