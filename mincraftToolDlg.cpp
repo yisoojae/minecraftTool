@@ -112,7 +112,8 @@ BOOL CmincraftToolDlg::OnInitDialog()
 	z1.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 310,10,400,30 }, this, 4);
 	z1.nextEdit = &x2;
 	z1.preEdit = &y1;
-	copyPaste.Create(L"복사", WS_CHILD | WS_VISIBLE, { 410,10,480,60 }, this, 8);
+	copyPaste1.Create(L"복사", WS_CHILD | WS_VISIBLE, { 410,0,480,35 }, this, 8);
+	copyPaste2.Create(L"복사", WS_CHILD | WS_VISIBLE, { 410,35,480,70 }, this, 9);
 	x2.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 110,40,200,60 }, this, 5);
 	x2.nextEdit = &y2;
 	x2.preEdit = &z1;
@@ -122,9 +123,9 @@ BOOL CmincraftToolDlg::OnInitDialog()
 	z2.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 310,40,400,60 }, this, 7);
 	z2.nextEdit = &element;
 	z2.preEdit = &y2;
-	resultFill.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE | ES_WANTRETURN, { 10,90,400,200 }, this, 9);
-	addFill.Create(L"추가", WS_CHILD | WS_VISIBLE, { 410,90,480,140 }, this, 10);
-	resetResult.Create(L"초기화", WS_CHILD | WS_VISIBLE, { 410,150,480,200 }, this, 11);
+	resultFill.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE | ES_WANTRETURN, { 10,90,400,200 }, this, 10);
+	addFill.Create(L"추가", WS_CHILD | WS_VISIBLE, { 410,90,480,140 }, this, 11);
+	resetResult.Create(L"초기화", WS_CHILD | WS_VISIBLE, { 410,150,480,200 }, this, 12);
 
 	x1.SetWindowText(L"0");
 	y1.SetWindowText(L"0");
@@ -138,6 +139,8 @@ BOOL CmincraftToolDlg::OnInitDialog()
 	x2.whichPos = 0b10 | 0b100;
 	y2.whichPos = 0b10 | 0b1000;
 	z2.whichPos = 0b10 | 0b10000;
+	copyPaste1.N = false;
+	copyPaste2.N = true;
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
