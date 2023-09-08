@@ -123,9 +123,10 @@ BOOL CmincraftToolDlg::OnInitDialog()
 	z2.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 310,40,400,60 }, this, 7);
 	z2.nextEdit = &element;
 	z2.preEdit = &y2;
-	resultFill.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE | ES_WANTRETURN, { 10,90,400,200 }, this, 10);
+	resultFill.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE | ES_WANTRETURN | ES_AUTOVSCROLL, { 10,90,400,200 }, this, 10);
 	addFill.Create(L"추가", WS_CHILD | WS_VISIBLE, { 410,90,480,140 }, this, 11);
 	resetResult.Create(L"초기화", WS_CHILD | WS_VISIBLE, { 410,150,480,200 }, this, 12);
+	copyText.Create(L"클립보드", WS_CHILD | WS_VISIBLE, { 10,210,480,320 }, this, 13);
 
 	x1.SetWindowText(L"0");
 	y1.SetWindowText(L"0");

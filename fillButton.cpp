@@ -38,7 +38,8 @@ void fillButton::OnSetFocus(CWnd* pOldWnd)
 	if (pOldWnd != &((CmincraftToolDlg*)GetParent())->copyPaste1
 		&& pOldWnd != &((CmincraftToolDlg*)GetParent())->copyPaste2
 		&& pOldWnd != &((CmincraftToolDlg*)GetParent())->addFill
-		&& pOldWnd != &((CmincraftToolDlg*)GetParent())->resetResult)
+		&& pOldWnd != &((CmincraftToolDlg*)GetParent())->resetResult
+		&& pOldWnd != &((CmincraftToolDlg*)GetParent())->copyText)
 	{
 		fillButton::pOldWnd = pOldWnd;
 	}

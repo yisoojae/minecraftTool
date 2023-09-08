@@ -9,6 +9,7 @@
 #include "resetButton.h"
 #include "addButton.h"
 #include "inputNum.h"
+#include "clipboardSetting.h"
 
 
 // CmincraftToolDlg 대화 상자
@@ -23,6 +24,7 @@ public:
 	copyButton copyPaste1, copyPaste2;
 	addButton addFill;
 	resetButton resetResult;
+	clipboardSetting copyText;
 
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME

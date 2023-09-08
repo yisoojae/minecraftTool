@@ -184,6 +184,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="addButton.h" />
+    <ClInclude Include="clipboardSetting.h" />
     <ClInclude Include="copyButton.h" />
     <ClInclude Include="fillButton.h" />
     <ClInclude Include="framework.h" />
@@ -198,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="addButton.cpp" />
+    <ClCompile Include="clipboardSetting.cpp" />
     <ClCompile Include="copyButton.cpp" />
     <ClCompile Include="fillButton.cpp" />
     <ClCompile Include="inputNum.cpp" />
