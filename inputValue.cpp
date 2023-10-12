@@ -21,7 +21,6 @@ inputValue::~inputValue()
 
 
 BEGIN_MESSAGE_MAP(inputValue, CEdit)
-	ON_WM_KEYDOWN()
 END_MESSAGE_MAP()
 
 

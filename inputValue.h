@@ -10,7 +10,7 @@ class inputValue : public CEdit
 public:
 	inputValue();
 	virtual ~inputValue();
-	inputValue *preEdit, *nextEdit;
+	CWnd *preEdit, *nextEdit;
 
 protected:
 	DECLARE_MESSAGE_MAP()

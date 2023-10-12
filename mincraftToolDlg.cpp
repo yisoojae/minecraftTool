@@ -100,7 +100,7 @@ BOOL CmincraftToolDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-	element.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL, { 10,10,100,30 }, this, 1);
+	element.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL | CBS_DROPDOWN, { 10,10,100,30 }, this, 1);
 	element.nextEdit = &x1;
 	element.preEdit = &z2;
 	x1.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 110,10,200,30 }, this, 2);
@@ -142,6 +142,8 @@ BOOL CmincraftToolDlg::OnInitDialog()
 	z2.whichPos = 0b10 | 0b10000;
 	copyPaste1.N = false;
 	copyPaste2.N = true;
+
+	renewCombo();
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -219,4 +221,49 @@ BOOL CmincraftToolDlg::PreTranslateMessage(MSG* pMsg)
 	}
 
 	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+void CmincraftToolDlg::renewCombo(bool isReturn)
+{
+	CFile dFile;
+	if (dFile.Open(_T("element.txt"), CFile::modeRead, NULL))
+	{
+		LPSTR strUtf8 = (LPSTR)malloc(dFile.GetLength() + 1);
+		if (!strUtf8) return;
+		LPSTR pStr = strUtf8;
+		LPSTR pStr2 = strUtf8;
+		element.ResetContent();
+		if (dFile.Read(strUtf8, (int)strlen(strUtf8)) != dFile.GetLength()) goto readFile_End;
+		while (*pStr)
+		{
+			if (*pStr == '\r')
+			{
+				LPSTR tmp = (LPSTR)malloc(pStr - pStr2 + 1);
+				if (!tmp) goto readFile_End;
+				LPSTR tmp_tmp = tmp;
+				while (pStr != pStr2)
+				{
+					*(tmp_tmp++) = *(pStr2++);
+				}
+				*tmp_tmp = 0;
+				int nLen = MultiByteToWideChar(CP_UTF8, 0, tmp, (int)strlen(tmp), 0, 0);
+				LPTSTR tmpUni = (LPTSTR)malloc((nLen + 1) * 2);
+				if (!tmpUni) goto readFile_End2;
+				MultiByteToWideChar(CP_UTF8, 0, tmp, (int)strlen(tmp), tmpUni, nLen);
+				tmpUni[nLen] = 0;
+				element.AddString(tmpUni);
+
+				free(tmpUni);
+			readFile_End2:
+				free(tmp);
+				++pStr; ++pStr2; ++pStr2;
+			}
+			++pStr;
+		}
+
+	readFile_End:
+		dFile.Close();
+		free(strUtf8);
+		if (isReturn) if (element.GetCount() != 0) element.SetCurSel(element.GetCount() - 1);
+	}
 }

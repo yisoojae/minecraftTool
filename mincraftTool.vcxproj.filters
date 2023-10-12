@@ -54,6 +54,9 @@
     <ClInclude Include="clipboardSetting.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="inputCombo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mincraftTool.cpp">
@@ -84,6 +87,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="clipboardSetting.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="inputCombo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

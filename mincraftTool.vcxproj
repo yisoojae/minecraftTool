@@ -188,6 +188,7 @@
     <ClInclude Include="copyButton.h" />
     <ClInclude Include="fillButton.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="inputCombo.h" />
     <ClInclude Include="inputNum.h" />
     <ClInclude Include="inputValue.h" />
     <ClInclude Include="mincraftTool.h" />
@@ -202,6 +203,7 @@
     <ClCompile Include="clipboardSetting.cpp" />
     <ClCompile Include="copyButton.cpp" />
     <ClCompile Include="fillButton.cpp" />
+    <ClCompile Include="inputCombo.cpp" />
     <ClCompile Include="inputNum.cpp" />
     <ClCompile Include="inputValue.cpp" />
     <ClCompile Include="mincraftTool.cpp" />

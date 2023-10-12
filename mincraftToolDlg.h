@@ -10,6 +10,7 @@
 #include "addButton.h"
 #include "inputNum.h"
 #include "clipboardSetting.h"
+#include "inputCombo.h"
 
 
 // CmincraftToolDlg 대화 상자
@@ -18,7 +19,7 @@ class CmincraftToolDlg : public CDialogEx
 // 생성입니다.
 public:
 	CmincraftToolDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
-	inputValue element;
+	inputCombo element;
 	inputNum x1, x2, y1, y2, z1, z2;
 	CEdit resultFill;
 	copyButton copyPaste1, copyPaste2;
@@ -47,4 +48,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
+	void renewCombo(bool isReturn = false);
 };
