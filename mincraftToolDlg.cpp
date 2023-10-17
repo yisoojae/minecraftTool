@@ -233,7 +233,7 @@ void CmincraftToolDlg::renewCombo(bool isReturn)
 		LPSTR pStr = strUtf8;
 		LPSTR pStr2 = strUtf8;
 		element.ResetContent();
-		if (dFile.Read(strUtf8, (int)strlen(strUtf8)) != dFile.GetLength()) goto readFile_End;
+		if (dFile.Read(strUtf8, dFile.GetLength() + 1) != dFile.GetLength()) goto readFile_End;
 		while (*pStr)
 		{
 			if (*pStr == '\r')

@@ -63,7 +63,7 @@ BOOL inputCombo::PreTranslateMessage(MSG* pMsg)
 			if (!tmpStrUtf8) return true;
 			LPSTR pStr = tmpStrUtf8;
 			LPSTR pStr2 = tmpStrUtf8;
-			if (dFile.Read(tmpStrUtf8, (int)strlen(tmpStrUtf8)) != dFile.GetLength()) goto readFile_End;
+			if (dFile.Read(tmpStrUtf8, dFile.GetLength() + 1) != dFile.GetLength()) goto readFile_End;
 			while (*pStr)
 			{
 				if (*pStr == '\r')
