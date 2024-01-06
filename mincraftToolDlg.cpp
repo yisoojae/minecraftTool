@@ -100,7 +100,7 @@ BOOL CmincraftToolDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-	element.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL | CBS_DROPDOWN, { 10,10,100,30 }, this, 1);
+	element.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_AUTOHSCROLL | CBS_DROPDOWN, { 10,10,100,30 }, this, 1);
 	element.nextEdit = &x1;
 	element.preEdit = &z2;
 	x1.Create(WS_CHILD | WS_VISIBLE | WS_BORDER | ES_NUMBER, { 110,10,200,30 }, this, 2);
